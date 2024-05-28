@@ -10,7 +10,7 @@ public class FileUploadPage extends BasePage {
     @FindBy(linkText = "File Upload")
     private WebElement uploadLink;
 
-    @FindBy(id = "file_upload")
+    @FindBy(id = "file-upload")
     private WebElement chooseFileBtn;
 
     @FindBy(xpath = "//input[@value='Upload']")
@@ -28,6 +28,10 @@ public class FileUploadPage extends BasePage {
     public void uploadFile(String filepath) {
         this.chooseFileBtn.sendKeys(filepath);
         this.uploadBtn.click();
-        waitForElementByText(uploadStatus, "Thank you for your message. It has been sent.");
+
+    }
+
+    public boolean isUploadSuccess() {
+        return waitForElementByText(uploadStatus, "Thank you for your message. It has been sent.");
     }
 }

@@ -17,7 +17,7 @@ public class WindowOperationsTest extends BaseTest {
         assertTrue(windowPage.waitForPageTitle("Home | automateNow"));
     }
 
-    @Test(description = "Test multiple open windows")
+    @Test(description = "Test multiple open tab")
     public void testMultipleOpenTabs() {
         WindowOperations windowPage = new WindowOperations();
         windowPage.openNewTab();
@@ -25,7 +25,7 @@ public class WindowOperationsTest extends BaseTest {
         assertTrue(windowPage.waitForPageTitle("Home | automateNow"));
     }
 
-    @Test(description = "Test multiple open windows")
+    @Test(description = "Test replace windows")
     public void testReplaceTab() {
         WindowOperations windowPage = new WindowOperations();
         windowPage.replaceWindow();

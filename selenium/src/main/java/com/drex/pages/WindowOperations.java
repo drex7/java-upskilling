@@ -38,7 +38,7 @@ public class WindowOperations extends BasePage {
     }
 
     public void switchToNewWindowHandle() {
-//        Get current window handle
+        // Get current window handle
         String currentWindow = getWindowHandle();
 
         // Get all window handles
