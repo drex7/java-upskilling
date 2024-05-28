@@ -14,7 +14,7 @@ public class FileUploadTest extends BaseTest {
 
         FileUploadPage fileUpload = new FileUploadPage();
         fileUpload.uploadFile(filePath);
-        assertTrue(fileUpload.isUploadSuccess(), "Upload was not successful");dd
+        assertTrue(fileUpload.isUploadSuccess(), "Upload was not successful");
     }
 
 }
