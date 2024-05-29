@@ -20,7 +20,6 @@ public class TablesPage extends BasePage {
     @FindBy(css = ".column-2.sorting")
     private WebElement countrySort;
 
-//    @FindBy(css = ".paginate_button.next.disabled")
     private final By disabledNextBtn = By.cssSelector(".paginate_button.next.disabled");
 
     @FindBy(xpath = "//a[normalize-space()='Next']")
@@ -29,21 +28,19 @@ public class TablesPage extends BasePage {
     @FindBy(css = ".dataTables_filter input")
     private WebElement search;
 
-    @SneakyThrows
     public TablesPage() {
         scrollIntoViewAndClick(this.tablesLink);
         waitForPageTitle("Tables");
     }
 
-    @SneakyThrows
     public void sortByCountry() {
         scrollBy(0, 550);
-        Thread.sleep(50);
-        this.countrySort.click();
+        waitToBeClickableAndClick(this.countrySort);
     }
 
 
-    @SneakyThrows
+
+
     public String getPopulation(String country) {
         boolean foundCountry = false;
 

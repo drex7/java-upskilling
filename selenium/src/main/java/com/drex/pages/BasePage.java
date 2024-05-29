@@ -8,6 +8,7 @@ import java.util.Set;
 
 import lombok.SneakyThrows;
 import org.openqa.selenium.*;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.pagefactory.AjaxElementLocatorFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -55,8 +56,7 @@ public class BasePage {
 	@SneakyThrows
 	public void scrollIntoViewAndClick(WebElement element) {
 		scrollIntoView(element);
-		Thread.sleep(50);
-		element.click();
+		waitToBeClickableAndClick(element);
 	}
 
 	public void scrollIntoView(WebElement ele) {
@@ -70,6 +70,11 @@ public class BasePage {
 
 	public boolean waitForPageTitle(String title) {
 		return customWait.until(ExpectedConditions.titleContains(title));
+	}
+
+	public void waitToBeClickableAndClick(WebElement element) {
+		getCustomWait().until(ExpectedConditions.elementToBeClickable(element));
+		element.click();
 	}
 
 	public void dismissPopup() {
@@ -125,8 +130,8 @@ public class BasePage {
 		this.driver.switchTo().window(window);
 	}
 
-	public void switchFrames(int frame) {
-		this.driver.switchTo().frame(frame);
+	public void switchFrames(int frameIndex) {
+		this.driver.switchTo().frame(frameIndex);
 	}
 
 	public void switchToDefaultFrame() {
@@ -141,7 +146,7 @@ public class BasePage {
 		return this.driver.findElements(locator);
 	}
 
-	public void scrollBy(Integer x, Integer y) {
+	public void scrollBy(int x, int y) {
 
 		js.executeScript(String.format("javascript:window.scrollBy(%s,%s)", x, y));
 	}
@@ -150,5 +155,8 @@ public class BasePage {
 		((JavascriptExecutor) getDriver()).executeScript("arguments[0].scrollIntoView(true);", element);
 	}
 
+	public Actions getActions() {
+		return new Actions(this.driver);
+	}
 
 }

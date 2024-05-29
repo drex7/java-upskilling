@@ -9,8 +9,11 @@ public class FileDownloadPage extends BasePage {
     @FindBy(xpath = "//a[contains(text(),'File Download')]")
     private WebElement fileDownload;
 
-    @FindBy(xpath = "//a[@class='wpdm-download-link download-on-click btn btn-primary ']")
+    @FindBy(xpath = "//a[@class='wpdm-download-link download-on-click btn btn-primary']")
     private WebElement pdfDownloadBtn;
+
+    @FindBy(css = ".wpdm-download-link.wpdm-download-locked.btn.btn-primary ")
+    private WebElement docDownloadBtn;
 
     @FindBy(linkText = "File Download")
     private WebElement downloadLink;
