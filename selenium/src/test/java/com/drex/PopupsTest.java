@@ -57,7 +57,6 @@ public class PopupsTest extends BaseTest {
         popupPage.acceptPopup();
 
         String result = popupPage.getPromptPopupResult();
-        System.out.println("\n\n\n msg:: " + result);
         assertTrue(result.contains("Nice to meet you, " + name));
     }
 

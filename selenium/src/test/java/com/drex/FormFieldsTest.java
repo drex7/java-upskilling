@@ -9,20 +9,20 @@ import com.drex.pages.FormFieldsPage;
 import java.util.Arrays;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.testng.Assert.assertFalse;
+import static org.testng.Assert.assertTrue;
+import static org.testng.AssertJUnit.assertEquals;
 
 public class FormFieldsTest extends BaseTest {
 
-	@Ignore
+
 	@Test(description = "Verify the page title")
 	public void testPageTitle() {
 		FormFieldsPage formPage = new FormFieldsPage();
-//		formPage.navigateToFormFields();
 		String title = formPage.getPageTitle();
 		assertEquals("Form Fields | Practice Automation", title);
 	}
 
-	@Ignore
 	@Test(description = "Enters name in an input field")
 	public void testEnterText() {
 		String name = "Godsway";

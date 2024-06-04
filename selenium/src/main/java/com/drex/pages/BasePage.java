@@ -38,8 +38,8 @@ public class BasePage {
 		PageFactory.initElements(new AjaxElementLocatorFactory(driver, timeout), this);
 
 		customWait = new FluentWait<WebDriver>(this.driver)
-				.withTimeout(Duration.ofSeconds(10))
-				.pollingEvery(Duration.ofSeconds(1))
+				.withTimeout(Duration.ofSeconds(timeout + 15))
+				.pollingEvery(Duration.ofMillis(100))
 				.ignoring(NoSuchElementException.class);
 
 		js = (JavascriptExecutor) driver;
@@ -53,14 +53,16 @@ public class BasePage {
 
 	public void click(By locator) { this.driver.findElement(locator).click(); }
 
-	@SneakyThrows
+
 	public void scrollIntoViewAndClick(WebElement element) {
 		scrollIntoView(element);
 		waitToBeClickableAndClick(element);
 	}
 
+	@SneakyThrows
 	public void scrollIntoView(WebElement ele) {
 		((JavascriptExecutor)this.driver).executeScript(String.format("window.scrollTo(%s,%s)", ele.getLocation().x, ele.getLocation().y));
+		Thread.sleep(200);
 	}
 
 	public void setText(By locator, String text) {

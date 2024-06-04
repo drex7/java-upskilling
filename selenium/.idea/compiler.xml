@@ -7,8 +7,12 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="selenium-java-browser-factory" />
+        <module name="selenium-java-upskill" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="selenium-java-browser-factory" target="21" />
+      <module name="selenium-java-factory" target="21" />
+    </bytecodeTargetLevel>
   </component>
 </project>

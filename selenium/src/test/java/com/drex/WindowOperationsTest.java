@@ -1,12 +1,14 @@
 package com.drex;
 
 import com.drex.pages.WindowOperations;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
 public class WindowOperationsTest extends BaseTest {
+
 
     @Test(description = "Test multiple open windows")
     public void testMultipleOpenWindows() {

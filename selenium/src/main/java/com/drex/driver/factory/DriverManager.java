@@ -24,14 +24,12 @@ public class DriverManager {
 		driver.remove();
 	}
 
-	/*
-	public static String getInfo() {
+    public static String getInfo() {
 		Capabilities cap = ((RemoteWebDriver) DriverManager.getDriver()).getCapabilities();
 		String browserName = cap.getBrowserName();
-		String platform = cap.getPlatform().toString();
-		String version = cap.getVersion();
+		String platform = cap.getPlatformName().toString();
+		String version = cap.getBrowserVersion();
 		return String.format("browser: %s v: %s platform: %s", browserName, version, platform);
-	}
-	*/
+    }
 	
 }

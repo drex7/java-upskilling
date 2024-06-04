@@ -47,7 +47,7 @@ public interface Configuration extends Config {
     String target();
 
     @Key("headless")
-    Boolean headless();
+    Boolean isHeadless();
 
     @Key("grid.url")
     String gridUrl();
