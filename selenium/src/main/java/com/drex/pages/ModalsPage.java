@@ -26,7 +26,7 @@ public class ModalsPage extends BasePage {
     @FindBy(id = "contact-form-comment-g1051-message")
     private WebElement message;
 
-    @FindBy(css = "button[type='submit']")
+    @FindBy(xpath = "//button[normalize-space()='Submit']")
     private WebElement submitBtn;
 
     @FindBy(xpath = "//div[@id='popmake-1318']//button[@aria-label='Close'][normalize-space()='×']")

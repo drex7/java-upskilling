@@ -31,11 +31,11 @@ public class PopupPage extends BasePage {
 
 
     public PopupPage() {
-        navigateToFormFieldsPage();
+        navigateToPage();
         waitForPageTitle("Popups");
     }
 
-    public void navigateToFormFieldsPage() {
+    public void navigateToPage() {
         scrollIntoViewAndClick(this.popupsLink);
     }
 
