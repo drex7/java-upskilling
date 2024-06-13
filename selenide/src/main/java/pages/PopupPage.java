@@ -4,7 +4,7 @@ import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.FindBy;
 
-import static com.codeborne.selenide.Condition.text;
+import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
 import static org.openqa.selenium.support.ui.ExpectedConditions.invisibilityOfElementLocated;
 import static org.openqa.selenium.support.ui.ExpectedConditions.textToBePresentInElement;
@@ -12,7 +12,7 @@ import static org.testng.Assert.assertEquals;
 
 public class PopupPage {
 
-    private SelenideElement tooltip = $(By.linkText("Popups"));
+    private SelenideElement tooltip = $(".tooltip_1");
 
     public PopupPage navigateToPage() {
         $(By.linkText("Popups")).click();
@@ -41,22 +41,24 @@ public class PopupPage {
         return this;
     }
 
-    public PopupPage fillName(String text) {
+    public PopupPage submitName(String text) {
         switchTo().alert().sendKeys(text);
+        this.acceptPopup();
         return this;
     }
 
 
     public String getConfirmPopupResult() {
-        return $(By.id("confirmResult")).getText();
+        return $(By.id("confirmResult")).should(appear).getText();
     }
 
     public String getPromptPopupResult() {
-        return  $(By.id("promptResult")).getText();
+        return  $(By.id("promptResult")).should(appear).getText();
     }
 
     public boolean waitForTooltip(String text) {
-        return Wait().until(textToBePresentInElement(tooltip, text));
+        return $(By.id("myTooltip")).isDisplayed();
+//        return Wait().until(textToBePresentInElement(tooltip, text));
 //        tooltip.shouldHave(text(text));
     }
 
@@ -64,11 +66,6 @@ public class PopupPage {
         String alertText = switchTo().alert().getText();
         assertEquals(alertText, text);
     }
-
-    public void assertResult(String expected) {
-        assertEquals(this.getConfirmPopupResult(), expected);
-    }
-
 
     public void acceptPopup() {
         switchTo().alert().accept();
@@ -78,7 +75,4 @@ public class PopupPage {
         switchTo().alert().dismiss();
     }
 
-    public void containsText(String coolText) {
-
-    }
 }

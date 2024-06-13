@@ -1,6 +1,7 @@
 package pages;
 
 import com.codeborne.selenide.ElementsCollection;
+import com.codeborne.selenide.SelenideElement;
 import com.google.common.base.Verify;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -16,13 +17,9 @@ import static com.codeborne.selenide.Selenide.$$;
 
 public class TablesPage {
 
-    private final By disabledNextBtn = By.cssSelector(".paginate_button.next.disabled");
+//    private final By disabledNextBtn = By.cssSelector(".paginate_button.next.disabled");
 
-    @FindBy(xpath = "//a[normalize-space()='Next']")
-    private WebElement nextBtn;
-
-    @FindBy(css = ".dataTables_filter input")
-    private WebElement search;
+    private final SelenideElement search = $(".dataTables_filter input");
 
     public TablesPage navigateToPage() {
         $(By.linkText("Tables")).click();

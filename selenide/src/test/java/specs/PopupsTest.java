@@ -46,7 +46,8 @@ public class PopupsTest extends BaseTest {
                 .assertPopupText("OK or Cancel, which will it be?");
 
         popupPage.dismissPopup();
-        popupPage.assertResult("Cancel it is!");
+        String response = popupPage.getConfirmPopupResult();
+        assertEquals(response, "Cancel it is!");
     }
 
     @DataProvider(name = "names")
@@ -65,11 +66,9 @@ public class PopupsTest extends BaseTest {
                 .clickPromptButton()
                 .assertPopupText("Hi there, what's your name?");
 
-        popupPage
-                .fillName(name)
-                .acceptPopup();
-
-        popupPage.assertResult("Nice to meet you, " + name);
+        popupPage.submitName(name);
+        String response = popupPage.getPromptPopupResult();
+        assertEquals(response, String.format("Nice to meet you, %s!", name));
     }
 
     @Test(description = "Test tooltip")
